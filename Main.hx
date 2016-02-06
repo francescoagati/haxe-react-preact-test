@@ -4,7 +4,10 @@ import api.react.ReactComponent;
 import js.Browser;
 import api.react.ReactMacro.jsx;
 
-class Main extends ReactComponent {
+
+class Main extends ReactComponent implements StateAccessor.IStateAccessor {
+
+    @:state var counter(get,set):Int;
 
     static public function main() {
         ReactDOM.render(React.createElement(Main), Browser.document.getElementById('app'));
@@ -12,6 +15,12 @@ class Main extends ReactComponent {
 
     public function new() {
         super();
+        counter = 0;
+        var timer = new haxe.Timer(1000);
+        timer.run = function() {
+          counter = counter + 1;
+        }
+
     }
 
     override function render() {
@@ -19,7 +28,7 @@ class Main extends ReactComponent {
         //return React.createElement('div', {className:cname}, "test");
         return jsx('
             <div className=$cname>
-                test
+                ${counter}
             </div>
         ');
     }
