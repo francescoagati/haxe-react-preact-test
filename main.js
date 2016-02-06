@@ -9,12 +9,12 @@ var IStateAccessor = function() { };
 var Main = function() {
 	var _g = this;
 	React.Component.call(this);
-	this.setState({ '_${field.name}' : 0});
-	this.state["_${field.name}"];
+	this.setState({ _counter : 0});
+	this.state._counter;
 	var timer = new haxe_Timer(1000);
 	timer.run = function() {
-		_g.setState({ '_${field.name}' : _g.state["_${field.name}"] + 1});
-		_g.state["_${field.name}"];
+		_g.setState({ _counter : _g.state._counter + 1});
+		_g.state._counter;
 	};
 };
 Main.__interfaces__ = [IStateAccessor];
@@ -24,14 +24,14 @@ Main.main = function() {
 Main.__super__ = React.Component;
 Main.prototype = $extend(React.Component.prototype,{
 	render: function() {
-		return React.createElement("div",{ className : "foo"},this.state["_${field.name}"]);
+		return React.createElement("div",{ className : "foo"},this.state._counter);
 	}
 	,get_counter: function() {
-		return this.state["_${field.name}"];
+		return this.state._counter;
 	}
 	,set_counter: function(v) {
-		this.setState({ '_${field.name}' : v});
-		return this.state["_${field.name}"];
+		this.setState({ _counter : v});
+		return this.state._counter;
 	}
 });
 var haxe_Timer = function(time_ms) {

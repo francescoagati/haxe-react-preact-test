@@ -9,7 +9,7 @@ class StateAccessor {
     var fields = Context.getBuildFields();
     for (field in fields) {
       if (field.isProperty() && field.hasMeta(':state')) {
-        var name = "_${field.name}";
+        var name = '_${field.name}';
         var get_accessor = 'get_${field.name}';
         var set_accessor = 'set_${field.name}';
         var params=[];
