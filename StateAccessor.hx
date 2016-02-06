@@ -15,8 +15,8 @@ class StateAccessor {
         var params=[];
 
         var fields_accessors = (macro class {
-          function $get_accessor() return state.$name;
-          function $set_accessor(v) {
+          inline function $get_accessor() return state.$name;
+          inline function $set_accessor(v) {
             setState({$name:v});
             return state.$name;
           }
