@@ -2,4 +2,7 @@
 -main Main
 -dce full
 -D analyzer
--lib react thx.core
+-lib react thx.core jsrequire
+--macro jsrequire.JSRequire.npmInstall(true)
+-D react_global
+-cmd browserify main.js -o build.js

@@ -5,10 +5,13 @@ function $extend(from, fields) {
 	if( fields.toString !== Object.prototype.toString ) proto.toString = fields.toString;
 	return proto;
 }
+var Preact = require("preact");
+var React = require("preact-compat");
+var RegisterPreact = function() { };
 var IStateAccessor = function() { };
-var Main = function() {
+var Main = function(props) {
 	var _g = this;
-	React.Component.call(this);
+	React.Component.call(this,props);
 	this.setState({ _counter : 0});
 	this.state._counter;
 	var timer = new haxe_Timer(1000);
@@ -19,6 +22,7 @@ var Main = function() {
 };
 Main.__interfaces__ = [IStateAccessor];
 Main.main = function() {
+	RegisterPreact;
 	ReactDOM.render(React.createElement(Main),window.document.getElementById("app"));
 };
 Main.__super__ = React.Component;
@@ -44,6 +48,10 @@ haxe_Timer.prototype = {
 	run: function() {
 	}
 };
+window.React = React;
+window.ReactDOM = React;
+console.log(React);
+console.log(Preact);
 Main.displayName = "Main";
 Main.main();
 })(typeof console != "undefined" ? console : {log:function(){}});
